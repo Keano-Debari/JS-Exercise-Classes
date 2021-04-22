@@ -84,8 +84,9 @@ class Airplane {
       return this.tank += gallons;
     }
     drive(distance) {
+      this.odometer += distance;
+      this.tank -= distance/this.milesPerGallon;
       
-      if(this.tank = 0)
         return `I ran out of fuel at ${this.odometer} miles!`;
     }
   }
@@ -127,9 +128,22 @@ class Airplane {
           + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
           + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
   */
- class Instructor {
-
+ class Instructor extends Lambdasian{
+   constructor(prop) {
+     super(prop);
+     this.specialty = prop.specialty;
+     this.favLanguage = prop.favLanguage;
+     this.catchPhrase = prop.catchPhrase;
+   }
+   demo(subject){
+    return `Today we are learning about ${subject}`;
+   }
+   grade(student, subject){
+     return `${student.name} receives a perfect score on ${subject}`
+   }
  }
+
+
   /*
     TASK 5
       - Write a Student class extending Lambdasian.
@@ -145,7 +159,22 @@ class Airplane {
           + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
           + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
   */
- class Student {
+ class Student extends Lambdasian{
+   constructor(prop) {
+     super(prop);
+     this.previousBackground = prop.previousBackground;
+     this.className = prop.className;
+     this.favSubjects = prop.favSubjects;
+   }
+   listSubjects() {
+     return `Loving ${this.favSubjects}`;
+   }
+   PRAssignment(subject) {
+     return `${this.name} has submitted a PR for ${subject}`;
+   }
+   sprintChallenge(subject) {
+     return `${this.name} has begun sprint challenge on ${subject}`;
+   }
      
  }
   
